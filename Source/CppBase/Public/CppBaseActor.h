@@ -31,11 +31,27 @@ protected:
 	UPROPERTY(EditInstanceOnly)
 	bool IsAlive;
 
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* Mesh;
+
+	UPROPERTY(EditAnywhere)
+	float Amplitude = 70.0;
+
+	UPROPERTY(EditAnywhere)
+	float Frequency = 4.0;
+
+	UPROPERTY(EditInstanceOnly)
+	FVector InitialLocation = FVector(0.0f, 0.0f, 0.0f);
+
+	float RunningTime = 0;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	
 private:
 	void ShowActorInformation();
 
+	UFUNCTION(BlueprintCallable)
+	void SinMovement();
 };
